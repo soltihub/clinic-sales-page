@@ -1,14 +1,27 @@
 # Clinic ad-copy sales page
 
-Five-block sales page for UAE clinics, with a validated free-sample form and a password-protected admin view at `/admin`.
+Five-block sales page for UAE clinics, with a validated free-sample form and a password-protected admin view for reviewing every request by hand.
 
-## Run locally
-`ADMIN_PASSWORD='your-password' python3 app.py`, then open http://localhost:8080
+## Live site
+- Site: https://clinicadsuae.pythonanywhere.com
+- Admin: https://clinicadsuae.pythonanywhere.com/admin (username: `admin`)
+- Hosting: PythonAnywhere free account `clinicadsuae`
 
-## Deploy on Railway
-1. New project, then deploy from this GitHub repo.
-2. Variables: `ADMIN_PASSWORD` (strong password) and `DB_PATH=/data/submissions.db`.
-3. Add a Volume mounted at `/data` so submissions survive restarts.
-4. Settings, Networking, Generate Domain.
+## Files
+- `app.py`: the sales page, form validation and admin view
+- `wsgi_app.py`: connects the app to PythonAnywhere
+- `Procfile`, `requirements.txt`: only used for other hosts like Railway
 
-Videos: add `videos/ad1.mp4` to `videos/ad5.mp4`.
+## Keep the site online
+Free sites switch off after one month. Log in to PythonAnywhere, open the **Web** tab and click **Run until 1 month from today**. PythonAnywhere emails a reminder a week before.
+
+## Update the site
+1. Edit `app.py` on your PC and upload it here.
+2. Upload the same file in PythonAnywhere under **Files**, `/home/clinicadsuae/clinic`.
+3. On the **Web** tab, click **Reload**.
+
+## Run locally (Windows PowerShell)
+`$env:ADMIN_PASSWORD="your-password"; py app.py`, then open http://localhost:8080
+
+## Security
+Never put the admin password in this repo. It lives only in the PythonAnywhere WSGI file.
